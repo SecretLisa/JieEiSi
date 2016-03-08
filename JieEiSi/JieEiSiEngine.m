@@ -1,11 +1,11 @@
-//  JPEngine.m
-//  JSPatch
+//  JieEiSiEngine.m
+//  JieEiSi
 //
 //  Created by bang on 15/4/30.
 //  Copyright (c) 2015 bang. All rights reserved.
 //
 
-#import "JPEngine.h"
+#import "JieEiSiEngine.h"
 #import <objc/runtime.h>
 #import <objc/message.h>
 
@@ -73,7 +73,7 @@ static NSLock              *_JSMethodSignatureLock;
 static NSRecursiveLock     *_JSMethodForwardCallLock;
 static NSMutableDictionary *_protocolTypeEncodeDict;
 
-@implementation JPEngine
+@implementation JieEiSiEngine
 
 #pragma mark - APIS
 
@@ -172,7 +172,7 @@ static NSMutableDictionary *_protocolTypeEncodeDict;
         NSArray *args = [JSContext currentArguments];
         for (JSValue *jsVal in args) {
             id obj = formatJSToOC(jsVal);
-            NSLog(@"JSPatch.log: %@", obj == _nilObj ? nil : (obj == _nullObj ? [NSNull null]: obj));
+            NSLog(@"JieEiSi.log: %@", obj == _nilObj ? nil : (obj == _nullObj ? [NSNull null]: obj));
         }
     };
     
@@ -199,12 +199,12 @@ static NSMutableDictionary *_protocolTypeEncodeDict;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleMemoryWarning) name:UIApplicationDidReceiveMemoryWarningNotification object:nil];
 #endif
     
-    NSString *path = [[NSBundle bundleForClass:[self class]] pathForResource:@"JSPatch" ofType:@"js"];
-    NSAssert(path, @"can't find JSPatch.js");
+    NSString *path = [[NSBundle bundleForClass:[self class]] pathForResource:@"JieEiSi" ofType:@"js"];
+    NSAssert(path, @"can't find JieEiSi.js");
     NSString *jsCore = [[NSString alloc] initWithData:[[NSFileManager defaultManager] contentsAtPath:path] encoding:NSUTF8StringEncoding];
     
     if ([_context respondsToSelector:@selector(evaluateScript:withSourceURL:)]) {
-        [_context evaluateScript:jsCore withSourceURL:[NSURL URLWithString:@"JSPatch.js"]];
+        [_context evaluateScript:jsCore withSourceURL:[NSURL URLWithString:@"JieEiSi.js"]];
     } else {
         [_context evaluateScript:jsCore];
     }
@@ -257,7 +257,7 @@ static NSMutableDictionary *_protocolTypeEncodeDict;
     if (![JSContext class]) {
         return;
     }
-    NSAssert(_context, @"please call [JPEngine startEngine]");
+    NSAssert(_context, @"please call [JieEiSiEngine startEngine]");
     for (NSString *className in extensions) {
         Class extCls = NSClassFromString(className);
         [extCls main:_context];

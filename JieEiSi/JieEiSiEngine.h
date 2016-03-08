@@ -1,6 +1,6 @@
 //
-//  JPEngine.h
-//  JSPatch
+//  JieEiSiEngine.h
+//  JieEiSi
 //
 //  Created by bang on 15/4/30.
 //  Copyright (c) 2015 bang. All rights reserved.
@@ -10,11 +10,11 @@
 #import <JavaScriptCore/JavaScriptCore.h>
 
 
-@interface JPEngine : NSObject
+@interface JieEiSiEngine : NSObject
 
 /*!
  @method
- @discussion start the JSPatch engine, execute only once.
+ @discussion start the JieEiSi engine, execute only once.
  */
 + (void)startEngine;
 
@@ -37,7 +37,7 @@
 
 /*!
  @method
- @description Return the JSPatch JavaScript execution environment.
+ @description Return the JieEiSi JavaScript execution environment.
  */
 + (JSContext *)context;
 
@@ -81,7 +81,7 @@
 
 /*!
  @method
- @description Return the registered struct definition in JSPatch,
+ @description Return the registered struct definition in JieEiSi,
  the key of dictionary is the struct name.
  */
 + (NSMutableDictionary *)registeredStruct;
