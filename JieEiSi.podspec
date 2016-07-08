@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name         = "JieEiSi"
   s.version      = "0.1.5"
-  s.summary      = ""
+  s.summary      = "JieEiSi"
 
   s.description  = ""
 
