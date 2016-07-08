@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
   s.version      = "0.1.5"
   s.summary      = "JieEiSi"
 
-  s.description  = ""
+  s.description  = "JieEiSi"
 
   s.homepage     = "https://github.com/SecretLisa/JieEiSi"
   s.license      = { :type => "MIT", :file => "LICENSE" }
